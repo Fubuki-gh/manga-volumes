@@ -1,4 +1,3 @@
-from msilib import schema
 from flask import request, abort
 from flask_restful import Resource
 from marshmallow import Schema, fields
@@ -9,6 +8,9 @@ class Title(Resource):
 
 class TitleQuerySchema(Schema):
     name = fields.Str(required=True)
+    limit = fields.Int(required=False)
+    offset = fields.Int(required=False)
+    sort = fields.Str(required=False)
 
 class TitleQ(Resource):
     def __init__(self) -> None:
@@ -18,5 +20,13 @@ class TitleQ(Resource):
         errors = self.schema.validate(request.args)
         if errors:
             abort(400, str(errors))
-        title_name = request.args.get("name", type=str)
-        return {"data": f"{title_name}"}, 200
+        name = request.args.get("name", type=str)
+        limit = request.args.get("limit", type=int, default=20)
+        offset = request.args.get("offset", type=int, default=0)
+        sort = request.args.get("sort", type=str, default=None)
+
+        return {"data": {
+            "name": name,
+            "limit": limit,
+            "offset": offset,
+            "sort": sort}}, 200
