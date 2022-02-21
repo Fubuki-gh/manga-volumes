@@ -1,27 +1,20 @@
-import sys 
-from typing import List
+import sys
 from flask import Flask
-from flask_restful import Api, Resource
+from flask_restful import Api
 
-app = Flask(__name__)
-api = Api(app)
-
-#Resource
-class Test(Resource):
-    def get(self, name) -> dict:
-        return {"name": name}
-
-#Register resource
-api.add_resource(Test, "/test/<string:name>")
+from endpoints.title import TitleQ, Title
 
 #Main
 def main(argc: int, argv: list[str]) -> None:
-    if argc < 2:
-        app.run(debug=False)
-    elif argv[1] == "debug":
-        app.run(debug=True)
-    else:
-        app.run(debug=False)
+
+    app = Flask(__name__)
+    api = Api(app)
+
+    #Register resource 
+    api.add_resource(TitleQ,    "/v1/title")
+    api.add_resource(Title,     "/v1/title/<int:title_id>")
+
+    app.run(port=1337, debug=True, threaded=True)
 
 if __name__ == "__main__":
     main(len(sys.argv), sys.argv)
