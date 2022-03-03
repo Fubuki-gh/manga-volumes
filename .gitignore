@@ -1,3 +1,4 @@
 service/database/*
+service/website/__pycache__
 venv/*
 !venv/requirements.txt
