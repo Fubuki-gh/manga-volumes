@@ -1,3 +1,4 @@
+service/api/__pycache__
 service/database/*
 service/website/__pycache__
 venv/*
