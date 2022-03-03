@@ -1,1 +1,3 @@
-api/database/database.db
+service/database/*
+venv/*
+!venv/requirements.txt

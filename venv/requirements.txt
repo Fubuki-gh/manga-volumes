@@ -1,0 +1,8 @@
+Flask
+Werkzeug
+MarkupSafe
+ItsDangerous
+Click
+Blinker
+python-dotenv
+Watchdog
