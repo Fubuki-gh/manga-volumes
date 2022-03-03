@@ -6,3 +6,4 @@ Click
 Blinker
 python-dotenv
 Watchdog
+flask_restful
