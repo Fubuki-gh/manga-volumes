@@ -1,5 +1,6 @@
-service/api/__pycache__
-service/api/resources/__pycache__
-service/database/*
+API/__pycache__
+API/common/__pycache__
+API/models/__pycache__
+API/resources/__pycache__
 venv/*
 !venv/requirements.txt
