@@ -3,11 +3,17 @@ from flask_restful import Resource, fields, marshal_with, reqparse
 
 from API.models.models import TitleModel
 
+
 get_parser_title_search = reqparse.RequestParser()
 get_parser_title_search.add_argument(
     'name', dest='name',
     location='args', required=True,
     help='Missing \'name\' parameter'
+)
+get_parser_title_search.add_argument(
+    'limit', dest='limit',
+    location='args', required=False,
+    type=int, default=10
 )
 
 title_fields = {
@@ -29,8 +35,9 @@ class TitleSearch(Resource):
     def get(self):
         args = get_parser_title_search.parse_args()
 
-        search = '%{}%'.format(args.name)
-        result = TitleModel.query.filter(TitleModel.name.like(search)).all()
+        search  = '%{}%'.format(args.name)
+        limit   = args['limit']
+        result  = TitleModel.query.filter(TitleModel.name.like(search)).limit(limit).all()
 
         if len(result) == 0:
             return result, 404
