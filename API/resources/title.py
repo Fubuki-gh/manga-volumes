@@ -52,7 +52,7 @@ class Title(Resource):
     @marshal_with(title_fields)
     def get(self, id):
         
-        result = TitleModel.query.filter_by(id=id).first()
+        result  = TitleModel.query.filter_by(id=id).first()
 
         if result is None:
             return result, 404
