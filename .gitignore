@@ -1,5 +1,6 @@
 API/__pycache__
 API/common/__pycache__
+API/db/database.db
 API/models/__pycache__
 API/resources/__pycache__
 venv/*
