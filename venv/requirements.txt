@@ -7,3 +7,5 @@ Blinker
 python-dotenv
 Watchdog
 flask_restful
+flask_sqlalchemy
+flask-session
