@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from API.models.models import db
+from api.models.models import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
@@ -10,8 +10,8 @@ api = Api(app)
 
 db.init_app(app)
 
-from API.resources.title import TitleSearch
-from API.resources.title import Title
+from api.resources.title import TitleSearch
+from api.resources.title import Title
 
 # Search
 api.add_resource(TitleSearch, '/search/title', resource_class_kwargs={'db': db})

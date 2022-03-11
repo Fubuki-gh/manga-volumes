@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, fields, marshal_with, reqparse
 
-from API.models.models import TitleModel
+from api.models.models import TitleModel
 
 
 get_parser_title_search = reqparse.RequestParser()
